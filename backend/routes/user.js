@@ -86,4 +86,29 @@ router.post('/:id/unfollow', authenticateToken, async (req, res) => {
     }
 });
 
+// Fetch all users except the current user
+router.get('/explore', authenticateToken, async (req, res) => {
+    try {
+      const users = await User.find({ _id: { $ne: req.user._id } });
+      res.status(200).json(users);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+
+// Get user by ID
+router.get('/:id', authenticateToken, async (req, res) => {
+    try {
+      const user = await User.findById(req.params.id).select('-password'); // Exclude password
+      if (!user) {
+        return res.status(404).json({ message: 'User not found' });
+      }
+      res.status(200).json(user);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+  
+  
+
 export default router;

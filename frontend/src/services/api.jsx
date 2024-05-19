@@ -10,8 +10,10 @@ const getAuthHeaders = () => {
 export const register = (userData) => API.post('/user/register', userData);
 export const login = (userData) => API.post('/user/login', userData);
 export const fetchPosts = () => API.get('/posts', { headers: getAuthHeaders() });
-export const createPost = (postData) => API.post('/posts/', postData, { headers: getAuthHeaders() });
+export const createPost = (postData) => API.post('/posts/create', postData, { headers: getAuthHeaders() });
 export const likePost = (postId) => API.post(`/posts/${postId}/like`, {}, { headers: getAuthHeaders() });
 export const commentOnPost = (postId, commentData) => API.post(`/posts/${postId}/comment`, commentData, { headers: getAuthHeaders() });
 export const followUser = (userId) => API.post(`/user/${userId}/follow`, {}, { headers: getAuthHeaders() });
 export const unfollowUser = (userId) => API.post(`/user/${userId}/unfollow`, {}, { headers: getAuthHeaders() });
+export const fetchExploreUsers = () => API.get('/user/explore', { headers: getAuthHeaders() });
+export const fetchUserById = (userId) => API.get(`/user/${userId}`, { headers: getAuthHeaders() });

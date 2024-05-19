@@ -1,0 +1,23 @@
+.postBody{
+    background-color: aliceblue;
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.formSection{
+    display: flex;
+    margin-top: 5px;
+}
+.addComment{
+    margin-right: 5px;
+}
+
+.commentSection{
+    background-color: white;
+    width: 150px;
+    padding: 3px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+}
